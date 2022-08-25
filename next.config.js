@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = { // https://nextjs.org/docs/api-reference/next.config.js/basepath
   reactStrictMode: true,
   experimental: {
     images: {
@@ -8,14 +8,12 @@ module.exports = {
   trailingSlash: true, // https://stackoverflow.com/questions/62867105/how-to-deal-with-nextjs-exporting-files-with-html-extension-but-inlink-there
   // exportPathMap: async function (
   //   defaultPathMap,
-  //   { outDir }
+  //   { dir }
   // ) {
   //   return {
-  //     '/': { page: '/' },
-  //     '/about': { page: '/about' },
-  //     '/p/hello-nextjs': { page: '/post', query: { title: 'hello-nextjs' } },
-  //     '/p/learn-nextjs': { page: '/post', query: { title: 'learn-nextjs' } },
-  //     '/p/deploy-nextjs': { page: '/post', query: { title: 'deploy-nextjs' } },
+  //     '/': { page: '/' }, // docs is replaced by next-markdown-blog in GitHub URL
   //   }
   // },
+  // assetPrefix: './',
+  basePath: process.env.NODE_ENV === 'production' ? '/next-markdown-blog' : '',
 }
