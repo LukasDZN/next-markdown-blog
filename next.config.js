@@ -5,8 +5,9 @@ module.exports = { // https://nextjs.org/docs/api-reference/next.config.js/basep
       unoptimized: true, // loader: 'akamai' + URL / or: unoptimized: true,
     },
   },
-  assetPrefix:  process.env.NODE_ENV === 'production' ? '/next-markdown-blog' : '',
-  basePath: process.env.NODE_ENV === 'production' ? '/next-markdown-blog' : '',
+  assetPrefix: '/next-markdown-blog',
+  basePath: '/next-markdown-blog',
+  // assetPrefix: 'https://github.com/LukasDZN/next-markdown-blog', // Changes URL for _next folder: https://nextjs.org/docs/api-reference/next.config.js/cdn-support-with-asset-prefix
   // exportPathMap: async function (
   //   defaultPathMap,
   //   { dir }

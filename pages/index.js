@@ -3,14 +3,17 @@ import matter from 'gray-matter';
 import Image from 'next/image';
 import Link from 'next/link';
 
+// https://nextjs.org/docs/api-reference/data-fetching/get-static-props
+// Exporting(that's why we use export!) a function called getStaticProps will pre-render a page at build time using the props returned from the function
+// Source: https://nextjs.org/docs/api-reference/data-fetching/get-static-props
 export async function getStaticProps() {
-  const pagePathSuffix = process.env.NODE_ENV === 'production'
-  ? '.html'
-  : '';
+  // const pagePathSuffix = process.env.NODE_ENV === 'production'
+  // ? '.html'
+  // : '';
   const files = fs.readdirSync('posts');
 
   const posts = files.map((fileName) => {
-    const slug = fileName.replace('.md', pagePathSuffix);
+    const slug = fileName.replace('.md', '');
     const readFile = fs.readFileSync(`posts/${fileName}`, 'utf-8');
     const { data: frontmatter } = matter(readFile);
     return {
@@ -26,10 +29,8 @@ export async function getStaticProps() {
   };
 }
 
+// Render the actual page using data from other functions
 export default function Home({ posts }) {
-  const imagePathPrefix = process.env.NODE_ENV === 'production'
-  ? '/next-markdown-blog'
-  : '';
   return (
     <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-0'>
       {posts.map(({ slug, frontmatter }) => (
@@ -43,7 +44,7 @@ export default function Home({ posts }) {
                 width={650}
                 height={340}
                 alt={frontmatter.title}
-                src={`${imagePathPrefix}/${frontmatter.socialImage}`}
+                src={`/next-markdown-blog/${frontmatter.socialImage}`}
               />
               <h1 className='p-4'>{frontmatter.title}</h1>
             </a>
