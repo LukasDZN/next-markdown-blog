@@ -5,7 +5,8 @@ module.exports = { // https://nextjs.org/docs/api-reference/next.config.js/basep
       unoptimized: true, // loader: 'akamai' + URL / or: unoptimized: true,
     },
   },
-  trailingSlash: true, // https://stackoverflow.com/questions/62867105/how-to-deal-with-nextjs-exporting-files-with-html-extension-but-inlink-there
+  assetPrefix:  process.env.NODE_ENV === 'production' ? '/next-markdown-blog' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/next-markdown-blog' : '',
   // exportPathMap: async function (
   //   defaultPathMap,
   //   { dir }
@@ -14,6 +15,5 @@ module.exports = { // https://nextjs.org/docs/api-reference/next.config.js/basep
   //     '/': { page: '/' }, // docs is replaced by next-markdown-blog in GitHub URL
   //   }
   // },
-  // assetPrefix: './',
-  basePath: process.env.NODE_ENV === 'production' ? '/next-markdown-blog' : '',
+  // trailingSlash: true, // https://stackoverflow.com/questions/62867105/how-to-deal-with-nextjs-exporting-files-with-html-extension-but-inlink-there
 }

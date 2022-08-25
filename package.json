@@ -9,6 +9,7 @@
     "export": "next export -o docs",
     "bs": "next build && next start",
     "be": "next build && next export -o docs",
+    "deployContent": "cd docs && echo \"\">.nojekyll && cd .. && git add . && git commit -m \"Auto generated commit msg: content changes\" && git push",
     "lint": "next lint"
   },
   "dependencies": {

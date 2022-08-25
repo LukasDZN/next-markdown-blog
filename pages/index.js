@@ -4,13 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export async function getStaticProps() {
-  const pathPrefix = process.env.NODE_ENV === 'production'
-  ? '/index.html'
+  const pagePathSuffix = process.env.NODE_ENV === 'production'
+  ? '.html'
   : '';
   const files = fs.readdirSync('posts');
 
   const posts = files.map((fileName) => {
-    const slug = fileName.replace('.md', pathPrefix);
+    const slug = fileName.replace('.md', pagePathSuffix);
     const readFile = fs.readFileSync(`posts/${fileName}`, 'utf-8');
     const { data: frontmatter } = matter(readFile);
     return {
@@ -27,6 +27,9 @@ export async function getStaticProps() {
 }
 
 export default function Home({ posts }) {
+  const imagePathPrefix = process.env.NODE_ENV === 'production'
+  ? '/next-markdown-blog'
+  : '';
   return (
     <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-0'>
       {posts.map(({ slug, frontmatter }) => (
@@ -40,7 +43,7 @@ export default function Home({ posts }) {
                 width={650}
                 height={340}
                 alt={frontmatter.title}
-                src={`/${frontmatter.socialImage}`}
+                src={`${imagePathPrefix}/${frontmatter.socialImage}`}
               />
               <h1 className='p-4'>{frontmatter.title}</h1>
             </a>
