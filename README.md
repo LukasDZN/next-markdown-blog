@@ -1,4 +1,4 @@
-This is a Markdown powered Next.js blog!
+This is a Markdown powered Next.js blog! [View Live version](https://lukasdzn.github.io/next-markdown-blog/)
 
 ## Getting Started
 
@@ -24,15 +24,13 @@ serve -s ./out -p 8000
 
 NOTE:
 In order to preview the exported static files locally, the following has to be edited:
-    - Comment out from next.config.js (otherwise "Uncaught SyntaxError: Unexpected token '<' (at ...)" will be thrown":
-        - // assetPrefix: '/next-markdown-blog',
-        - // basePath: '/next-markdown-blog',
-    - Remove '/next-markdown-blog' from Image src
+
+- Comment out from next.config.js (otherwise "Uncaught SyntaxError: Unexpected token '<' (at ...)" will be thrown":
+- - // assetPrefix: '/next-markdown-blog',
+- - // basePath: '/next-markdown-blog',
+- Remove '/next-markdown-blog' from Image src
+
 To deploy to GitHub, undo the changes above.
-
-## Original tutorial
-
-This blog was initially made by following this [article](https://blog.openreplay.com/creating-a-markdown-blog-powered-by-next-js-in-under-an-hour).
 
 ## Resources
 
